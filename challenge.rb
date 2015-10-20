@@ -4,9 +4,9 @@
 # Question 1: Ruby objects and classes.
 # How would one find the class of the below objects.
 
-"Hello World"
-33
-65.89
+"Hello World".class
+33.class
+65.89.class
 
 # Question 2: Booleans
 # What would be the result of executing the below statements
@@ -17,18 +17,31 @@ else
   puts "it's false"
 end
 
+==>"it's true"
+
 # 2.1 Substitue "hello" && 4.5 for 33 && 55 above. What's the output?
+==>"it's true"
 # 2.2 Substitue nil && 88 for 33 && 55 above. What's the output?
+==>"it's false"
 # 2.4 Substitue 63.4 < 64. What's the output?
+==> "it's false"
 
 # Question 3 :Strings
 
 # How would you (Yes, you can look up the String methods!):
 
 # 3.1. determine if a string is included another another string?
+str.include? "hey" # this will return true if "hey" is included in the str string.
+
 # 3.2. determine if the length of a string?
+str.length
 # 3.3. Go from the string "eels in my hovercraft" to "fish in my sink" but don't
 # change the string "eels in my hovercraft"
+str1 = "eels in my hovercraft"
+str2 = "fish in my sink"
+
+str1 = str2
+
 
 
 # Question 4 : Variables
@@ -38,21 +51,63 @@ end
 vehicle = "4 wheel Bus"
 
 # 4.1 to "6 wheel Bus"
+vehicle.gsub!(/4/, "6")
 # 4.2 to "6 wheel tank"
+vehicle.gsub!(/Bus/, "tank")
 # 4.3 Create a NEW string from the string in 4.2 that will be
 # "6 wheel tank that shoots rainbow bunnnies"
+vehicle_rb = vehicle + " that shoots rainbow bunnies"
 
 # Question 5 : Loop
 # - write a loop that guesses your age.
+puts "what is my age?"
+answer = 25
+guess = gets.chomp!.to_i
+while guess != answer
+  puts "Guess again, what's my age?"
+  guess = gets.chomp!.to_i
+end
+puts "you got it!"
+
 # - Only allow 4 guesses
+puts "what is my age?"
+answer = 25
+guess = gets.chomp!.to_i
+guesses = 1
+max_guesses = 4
+while guess != answer &&guesses<max_guesses
+  puts "Guess again, what's my age?"
+  guess = gets.chomp!.to_i
+  guesses += 1
+end
+
 # - Notify the user if they guess correctly OR if they run out of turns to guess
 # - Get mad and curse the fingers that thought you where that old,
 # - aaaah maaan c'mon, huh, WTF
 # - I'm not kidding, say unkind works to a user that thinks your 10 years older
 #   than you are.
 
+answer = 25
+guess = nil
+guesses = 1
+max_guesses = 4
+while guess != answer && guesses<max_guesses
+  puts "What's my age?"
+  guess = gets.chomp!.to_i
+  guesses += 1
+  if guess == answer
+    puts "you got it"
+  elsif (guess - answer).abs > 10
+    puts "aaaah maaan c'mon, huh, WTF"
+  elsif guesses ==max_guesses
+    puts "you ran out of turns"
+end
+
+
+
 # Bonus Question: Who said this?
 
 # The great enemy of the truth is very often not the lie -- deliberate, contrived
 # and dishonest, but the myth, persistent, persuasive, and unrealistic.
 # Belief in myths allows the comfort of opinion without the discomfort of thought.
+JFK
